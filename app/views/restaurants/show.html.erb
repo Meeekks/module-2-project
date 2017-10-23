@@ -12,3 +12,22 @@
 <%= @restaurant.longitude %><br><br>
 <label>Latitude: </label><br>
 <%= @restaurant.latitude %><br><br>
+<label>Comments: </label>
+<% @restaurant.comments.each do |comment| %>
+<%= comment.content %><br>
+<% end %>
+
+
+<h3>New Comment</h3>
+
+<%= form_for @comment do |f| %>
+  <%= f.label :content, "Content:" %><br>
+  <%= f.text_field :content %><br><br>
+  <label>Select User: </label><br>
+  <%= f.collection_select :user_id, User.all, :id, :username %><br>
+<%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+ <br><br>
+
+<br>
+  <%= f.submit %>
+<% end %>

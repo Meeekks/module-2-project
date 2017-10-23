@@ -10,10 +10,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
+    # byebug
     if @comment.save
-      redirect_to comment_path(@comment)
+      redirect_to restaurant_path(@comment.restaurant_id)
     else
-      render :new
+      render inline: "error"
+      # redirect_to restaurant_path(@comment.restaurant_id)
     end
   end
 
