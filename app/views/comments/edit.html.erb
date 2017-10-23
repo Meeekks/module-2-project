@@ -1,0 +1,12 @@
+<h3>Edit Comment</h3>
+
+<%= form_for @comment do |f| %>
+  <%= f.label :content, "Content:" %><br>
+  <%= f.text_field :content %><br><br>
+  <label>Select User: </label><br>
+  <%= f.collection_select :content, User.all, :id, :username %><br>
+  <label>Select Restaurant: </label><br>
+  <%= f.collection_select :content, Restaurant.all, :id, :name %><br><br>
+
+  <%= f.submit %>
+<% end %>

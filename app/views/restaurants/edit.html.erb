@@ -1,0 +1,23 @@
+<h3>Edit Restaurant</h3>
+
+<%= form_for @restaurant do |f| %>
+  <%= f.label :name %><br>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :address %><br>
+  <%= f.text_field :address %><br><br>
+
+  <%= f.label :rating %><br>
+  <%= f.text_field :rating %><br><br>
+
+  <%= f.label :img_url %><br>
+  <%= f.text_field :img_url %><br><br>
+
+  <%= f.label :longitude %><br>
+  <%= f.text_field :longitude %><br><br>
+
+  <%= f.label :latitude %><br>
+  <%= f.text_field :latitude %><br><br>
+
+  <%= f.submit %>
+<% end %>
