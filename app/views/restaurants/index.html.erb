@@ -1,23 +1,23 @@
-<h3>Restaurant Index</h3>
+<h2>Restaurant Index</h2>
 
 <% @restaurants.each do |restaurant| %>
   <ul>
-  <label>Name: </label><br>
+  <label><strong>Name: </strong></label><br>
   <%= link_to restaurant.name, restaurant_path(restaurant) %><br><br>
   <ul>
-  <label>Address: </label><br>
+  <label><strong>Address: </strong></label><br>
   <%= restaurant.address %><br><br>
 
-  <label>Rating: </label><br>
+  <label><strong>Rating: </strong></label><br>
   <%= restaurant.rating %><br><br>
 
-  <label>Img Url: </label><br>
+  <label><strong>Image Url: </strong></label><br>
   <%= restaurant.img_url %><br><br>
 
-  <label>Longitude: </label><br>
+  <label><strong>Longitude: </strong></label><br>
   <%= restaurant.longitude %><br><br>
 
-  <label>Latitude: </label><br>
+  <label><strong>Latitude: </strong></label><br>
   <%= restaurant.latitude %><br><br>
   </ul>
   </ul>

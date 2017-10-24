@@ -1,6 +1,12 @@
-<h3>Comment Index</h3>
+<h2>Comments Index</h2>
 
 <% @comments.each do |comment| %>
-  <strong><label>Content: </label></strong><br>
-  <%= comment.content %><br><br>
+  <strong><label>User: </label></strong><br>
+  <%= link_to comment.user.name, comment_path(comment) %><br>
+  <ul>
+    <li>
+      <strong><label>Content: </label></strong><br>
+      <%= comment.content %><br><br>
+    </li>
+  </ul>
 <% end %>

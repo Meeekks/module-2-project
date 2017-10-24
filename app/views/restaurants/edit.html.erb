@@ -1,22 +1,36 @@
-<h3>Edit Restaurant</h3>
+<h2>Edit Restaurant</h2>
 
 <%= form_for @restaurant do |f| %>
-  <%= f.label :name %><br>
-  <%= f.text_field :name %><br><br>
+  <% if @restaurant.errors.any? %>
+      <div id="error_explanation">
+        <h2>
+          <%= pluralize(@restaurant.errors.count, "error") %> prohibited this restaurant from being saved:
+        </h2>
 
-  <%= f.label :address %><br>
-  <%= f.text_field :address %><br><br>
+        <ul>
+        <% @restaurant.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+  <strong><%= f.label :name, "Name:" %></strong><br>
+  <%= f.text_field :name %><br>
 
-  <%= f.label :rating %><br>
-  <%= f.text_field :rating %><br><br>
+  <strong><%= f.label :address, "Address:" %></strong><br>
+  <%= f.text_field :address %><br>
 
-  <%= f.label :img_url %><br>
-  <%= f.text_field :img_url %><br><br>
+  <strong><%= f.label :rating, "Rating:" %></strong><br>
+  <%= f.text_field :rating %><br>
 
-  <%= f.label :longitude %><br>
-  <%= f.text_field :longitude %><br><br>
+  <strong><%= f.label :img_url, "Image Url:" %></strong><br>
+  <%= f.text_field :img_url %><br>
 
-  <%= f.label :latitude %><br>
+  <strong><%= f.label :longitude, "Longitude:" %></strong><br>
+  <%= f.text_field :longitude %><br>
+
+  <strong><%= f.label :latitude, "Latitude:" %></strong><br>
   <%= f.text_field :latitude %><br><br>
 
   <%= f.submit %>

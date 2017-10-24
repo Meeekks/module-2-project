@@ -1,4 +1,10 @@
-<h3>Comment Show</h3>
+<h2>Comment Show</h2>
 
-<strong><label>Content: </label></strong><br>
-<%= @comment.content %><br>
+<strong><label>User: </label></strong><br>
+<%= @comment.user.name %><br>
+<ul>
+  <li>
+    <strong><label>Content: </label></strong><br>
+    <%= @comment.content %><br>
+  </li>
+</ul>

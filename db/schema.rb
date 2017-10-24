@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 20171023184658) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer "restaurant_id"
     t.text "content"
+    t.integer "restaurant_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
   end
 
   create_table "favorites", force: :cascade do |t|
