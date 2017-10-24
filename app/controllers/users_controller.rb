@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    # byebug
     @users = User.all
   end
 
@@ -46,7 +47,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :username, :password_digest, :email, :phone_number)
+      params.require(:user).permit(:first_name, :last_name, :username, :password, :email, :phone_number)
     end
 
 end

@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <header>
+      Logged in As: <%= current_user.first_name %>
+      <br>
+      <%= link_to "LOG OUT", logout_path %>
+    </header>
     <%= yield %>
   </body>
 </html>

@@ -17,11 +17,17 @@
 
 <label><strong>Latitude: </strong></label><br>
 <%= @restaurant.latitude %><br><br>
-
+<center>
 <label><strong>Comments: </strong></label>
+<br>
+
+
 <% @restaurant.comments.each do |comment| %>
-<%= comment.content %><br>
+<li> <%= comment.content %> </li><br>
 <% end %><br><br><br>
+
+</center>
+
 
 
 
@@ -29,8 +35,9 @@
 
 <%= form_for @comment do |f| %>
   <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-  <%= f.label :user, "Select User:" %><br>
-  <%= f.collection_select :user_id, User.all, :id, :username %><br><br>
+  Commenting as: <%= current_user.first_name %><br>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+
   <%= f.label :content, "Content:" %><br>
   <%= f.text_area :content %><br><br>
 
