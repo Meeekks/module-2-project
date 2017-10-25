@@ -10,10 +10,15 @@
 
   <body>
     <header>
+
       Logged in As: <%= current_user.first_name %>
+      <%= button_to "LOG OUT", logout_path, :method => :get %>
       <br>
-      <%= link_to "LOG OUT", logout_path %>
+      <br>
+      View Profile:<%= button_to "MY PROFILE", user_path(current_user),:method => :get    %>
+
     </header>
+
     <%= yield %>
   </body>
 </html>

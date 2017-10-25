@@ -14,3 +14,11 @@
 
 <label><strong>Phone Number: </strong></label><br>
 <%= @user.phone_number %><br><br>
+
+
+<h3>Here are <%= @user.first_name %>'s favorite restaurants: </h3>
+
+<% @user.favorites.each do |fav| %>
+<br>
+<%= link_to Restaurant.find(fav.restaurant_id).name, restaurant_path(fav.restaurant_id)%>
+<%end %>

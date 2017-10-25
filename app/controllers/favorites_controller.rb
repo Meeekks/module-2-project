@@ -9,11 +9,12 @@ class FavoritesController < ApplicationController
   end
 
   def create
+    # byebug
     @favorite = Favorite.create(favorite_params)
     if @favorite.save
-      redirect_to favorite_path(@favorite)
+      redirect_to user_path(@favorite.user_id)
     else
-      render :new
+      redirect_to restaurant_path(@favorite.restaurant_id)
     end
   end
 

@@ -1,4 +1,5 @@
 <h2>Restaurant Show</h2>
+<img src = "<%=@restaurant.img_url %>" height = 200 px, length = 200 px><br>
 
 <label><strong>Name: </strong></label><br>
 <%= @restaurant.name %><br><br>
@@ -7,23 +8,25 @@
 <%= @restaurant.address %><br><br>
 
 <label><strong>Rating: </strong></label><br>
-<%= @restaurant.rating %><br><br>
+<%= @restaurant.rating %><br>
 
-<label><strong>Img Url: </strong></label><br>
-<%= @restaurant.img_url %><br><br>
 
-<label><strong>Longitude: </strong></label><br>
-<%= @restaurant.longitude %><br><br>
+<%= form_for @favorite do |f| %>
+<%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+<%= f.submit "Add Restaurant To Your Favorites"%>
+<% end %>
 
-<label><strong>Latitude: </strong></label><br>
-<%= @restaurant.latitude %><br><br>
+
 <center>
+
 <label><strong>Comments: </strong></label>
 <br>
 
 
+
 <% @restaurant.comments.each do |comment| %>
-<li> <%= comment.content %> </li><br>
+<li> <%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> said: <%= comment.content %> </li><br>
 <% end %><br><br><br>
 
 </center>
@@ -37,9 +40,7 @@
   <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
   Commenting as: <%= current_user.first_name %><br>
   <%= f.hidden_field :user_id, :value => current_user.id %>
-
-  <%= f.label :content, "Content:" %><br>
-  <%= f.text_area :content %><br><br>
+  <%= f.text_area :content %><br>
 
   <%= f.submit %>
 <% end %>

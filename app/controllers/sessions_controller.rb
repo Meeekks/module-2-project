@@ -15,7 +15,7 @@ end
   end
 
   def destory
-    session[:user_id] = 10
+    session[:user_id] = 13
     redirect_to "/" , notice: 'Logged out!'
     #  maybe bring them back to the log in page or create accoutn page
   end
