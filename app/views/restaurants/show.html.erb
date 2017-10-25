@@ -1,14 +1,8 @@
-<h2>Restaurant Show</h2>
+<h1><%= link_to @restaurant.name %></h1>
 <img src = "<%=@restaurant.img_url %>" height = 200 px, length = 200 px><br>
+<label><strong>Address: </strong></label><%= @restaurant.address %><br><br>
 
-<label><strong>Name: </strong></label><br>
-<%= @restaurant.name %><br><br>
-
-<label><strong>Address: </strong></label><br>
-<%= @restaurant.address %><br><br>
-
-<label><strong>Rating: </strong></label><br>
-<%= @restaurant.rating %><br>
+<label><strong>Rating: </strong></label><%= @restaurant.rating %><br>
 
 
 <%= form_for @favorite do |f| %>
@@ -16,7 +10,7 @@
 <%= f.hidden_field :user_id, :value => current_user.id %>
 <%= f.submit "Add Restaurant To Your Favorites"%>
 <% end %>
-
+<br>
 
 <center>
 
@@ -27,12 +21,9 @@
 
 <% @restaurant.comments.each do |comment| %>
 <li> <%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> said: <%= comment.content %> </li><br>
-<% end %><br><br><br>
+<% end %><br><br>
 
 </center>
-
-
-
 
 <h3>New Comment</h3>
 

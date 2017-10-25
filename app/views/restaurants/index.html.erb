@@ -1,24 +1,14 @@
-<h2>Restaurant Index</h2>
+<h2>All RESTful Restaurants</h2>
 
 <% @restaurants.each do |restaurant| %>
   <ul>
-  <label><strong>Name: </strong></label><br>
-  <%= link_to restaurant.name, restaurant_path(restaurant) %><br><br>
+    <br>
+  <label><strong>Name: </strong></label><%= link_to restaurant.name, restaurant_path(restaurant) %><br><br>
+  <img src = "<%=restaurant.img_url %>" height = 200 px, length = 200 px><br>
   <ul>
-  <label><strong>Address: </strong></label><br>
-  <%= restaurant.address %><br><br>
+  <label><strong>Address: </strong></label><%= restaurant.address %><br>
 
-  <label><strong>Rating: </strong></label><br>
-  <%= restaurant.rating %><br><br>
-
-  <label><strong>Image Url: </strong></label><br>
-  <%= restaurant.img_url %><br><br>
-
-  <label><strong>Longitude: </strong></label><br>
-  <%= restaurant.longitude %><br><br>
-
-  <label><strong>Latitude: </strong></label><br>
-  <%= restaurant.latitude %><br><br>
+  <label><strong>Rating: </strong></label><%= restaurant.rating %><br>
   </ul>
   </ul>
 <% end %>

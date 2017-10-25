@@ -1,23 +1,17 @@
 <h2>User Show</h2>
 
-<label><strong>Username: </strong></label><br>
-<%= @user.username %><br><br>
+<label><strong>Username: </strong></label><%= @user.username %><br><br>
 
-<label><strong>First Name: </strong></label><br>
-<%= @user.first_name %><br><br>
+<label><strong>First Name: </strong></label><%= @user.first_name %><br><br>
 
-<label><strong>Last Name: </strong></label><br>
-<%= @user.last_name %><br><br>
+<label><strong>Last Name: </strong></label><%= @user.last_name %><br><br>
 
-<label><strong>Email: </strong></label><br>
-<%= @user.email %><br><br>
+<label><strong>Email: </strong></label><%= @user.email %><br><br>
 
-<label><strong>Phone Number: </strong></label><br>
-<%= @user.phone_number %><br><br>
+<label><strong>Phone Number: </strong></label><%= @user.phone_number %><br><br>
 
 
 <h3>Here are <%= @user.first_name %>'s favorite restaurants: </h3>
-
 <% @user.favorites.each do |fav| %>
 <br>
 <%= link_to Restaurant.find(fav.restaurant_id).name, restaurant_path(fav.restaurant_id)%>
