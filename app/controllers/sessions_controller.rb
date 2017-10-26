@@ -1,23 +1,23 @@
 class SessionsController < ApplicationController
-def new
-end
+
+  def new
+  end
 
   def create
-    user = User.find_by_email(params[:email])
-
-    if user && user.authenticate(params[:password])
+    user = User.find_by(username: params[:user][:username])
+    user = user.try(:authenticate, params[:user][:password])
+    if user
       session[:user_id] = user.id
-      redirect_to user_path(user)
-      #  redirect them to ther profile.... and at the prfile make buttom to crate post
+      @user = user
+      redirect_to :root
     else
-      render :new
+      redirect_to '/login'
     end
   end
 
-  def destory
-    session[:user_id] = 13
-    redirect_to "/" , notice: 'Logged out!'
-    #  maybe bring them back to the log in page or create accoutn page
+  def destroy
+    session.delete :user_id
+    redirect_to :root, notice: 'Logged out!'
   end
 
 end
