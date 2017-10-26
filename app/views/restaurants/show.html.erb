@@ -1,37 +1,76 @@
-<h1><%= link_to @restaurant.name %></h1>
-<img src = "<%=@restaurant.img_url %>" height = 200 px, length = 200 px><br>
-<label><strong>Address: </strong></label><%= @restaurant.address %><br><br>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
+        <%= button_to "LOG OUT", logout_path, :method => :post%>
+        <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
+        </h5>
+      </div>
+      <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
 
-<label><strong>Rating: </strong></label><%= @restaurant.rating %><br>
+      <br>
+    </header>
+    <h2>Restaurant Show</h2>
+
+    <img src = "<%= @restaurant.image_url %>" height = 200px, length: 200px><br><br>
+
+    <label><strong>Name: </strong></label><br>
+    <%= @restaurant.name %><br><br>
+
+    <label><strong>Address: </strong></label><br>
+    <%= @restaurant.address %><br><br>
+
+    <label><strong>Rating: </strong></label><br>
+    <%= @restaurant.rating %><br><br>
+
+    <label>Categories: </label><br>
+    <%= @restaurant.categories %><br><br>
+
+    <label>Phone: </label><br>
+    <%= @restaurant.phone %><br><br>
+
+    <label><strong>Comments: </strong></label>
+    <% @restaurant.comments.each do |comment| %>
+    <%= comment.content %><br>
+    <% end %><br><br><br>
+
+    <%= form_for @favorite do |f| %>
+
+      <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.submit "Add Restaurant To Your Favorites"%>
+    <% end %>
+    <br>
+
+    <center>
+
+    <label><strong>Comments: </strong></label>
+    <br>
 
 
-<%= form_for @favorite do |f| %>
-<%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-<%= f.hidden_field :user_id, :value => current_user.id %>
-<%= f.submit "Add Restaurant To Your Favorites"%>
-<% end %>
-<br>
 
-<center>
+    <% @restaurant.comments.each do |comment| %>
+    <li> <%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> said: <%= comment.content %> </li><br>
+    <% end %><br><br>
 
-<label><strong>Comments: </strong></label>
-<br>
+    </center>
 
+    <h3>New Comment</h3>
 
+    <%= form_for @comment do |f| %>
+      <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+      Commenting as: <%= @user.name %><br>
+      <%= f.hidden_field :user_id, :value => @user.id %>
+      <%= f.text_area :content %><br>
 
-<% @restaurant.comments.each do |comment| %>
-<li> <%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> said: <%= comment.content %> </li><br>
-<% end %><br><br>
+      <%= f.submit %>
+    <% end %>
 
-</center>
-
-<h3>New Comment</h3>
-
-<%= form_for @comment do |f| %>
-  <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-  Commenting as: <%= current_user.first_name %><br>
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  <%= f.text_area :content %><br>
-
-  <%= f.submit %>
-<% end %>
+  </body>
+</html>

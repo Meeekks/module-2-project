@@ -1,10 +1,6 @@
 class UsersController < ApplicationController
 
-  def home
-  end
-
   def index
-    # byebug
     @users = User.all
   end
 

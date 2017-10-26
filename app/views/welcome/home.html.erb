@@ -1,0 +1,7 @@
+Hi, <%= @user.name %>!<br><br>
+
+<%= button_to "Search Restaurants", '/restaurants', method: "get" %><br><br>
+
+<%= form_tag '/logout' do %>
+  <%= submit_tag "Logout" %>
+<% end %>

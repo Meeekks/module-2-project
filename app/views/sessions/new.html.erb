@@ -1,15 +1,14 @@
 <h1>Log In</h1>
 
-<%= form_tag login_path do %>
-  <div class="field">
-    <%= label_tag :email %><br>
-    <%= text_field_tag :email %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %><br>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions">
-    <%= submit_tag "Log In" %>
-  </div>
-  <% end %>
+<%= form_for @user, url: login_path, method: 'post' do |f| %>
+
+  <%= f.label :username %>
+  <%= f.text_field :username %><br><br>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br><br>
+
+  <%= f.submit 'Log In' %><br>
+  <%= link_to "Sign Up", new_user_path %>
+
+<% end %>

@@ -1,34 +1,53 @@
-<h2>Edit User</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      
+      <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
+      <%= button_to "LOG OUT", logout_path, :method => :post%>
+      <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
+      </h5>
+    </div>
+    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
 
-<%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-      <div id="error_explanation">
-        <h2>
-          <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
-        </h2>
+    </header>
 
-        <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+    <%= form_for @user do |f| %>
+      <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2>
+              <%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:
+            </h2>
+
+            <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
         <% end %>
-        </ul>
-      </div>
+
+      <%= f.label :first_name, "First Name:" %><br>
+      <%= f.text_field :first_name %><br>
+
+      <%= f.label :last_name, "Last Name:" %><br>
+      <%= f.text_field :last_name %><br>
+
+      <%= f.label :username, "Username:" %><br>
+      <%= f.text_field :username %><br>
+
+      <%= f.label :email, "Email:" %><br>
+      <%= f.text_field :email %><br>
+
+      <%= f.label :phone_number, "Phone Number:" %><br>
+      <%= f.text_field :phone_number %><br><br>
+
+      <%= f.submit %>
     <% end %>
-
-  <%= f.label :first_name, "First Name:" %><br>
-  <%= f.text_field :first_name %><br>
-
-  <%= f.label :last_name, "Last Name:" %><br>
-  <%= f.text_field :last_name %><br>
-
-  <%= f.label :username, "Username:" %><br>
-  <%= f.text_field :username %><br>
-
-  <%= f.label :email, "Email:" %><br>
-  <%= f.text_field :email %><br>
-
-  <%= f.label :phone_number, "Phone Number:" %><br>
-  <%= f.text_field :phone_number %><br><br>
-
-  <%= f.submit %>
-<% end %>
+  </body>
+</html>
+<h2>Edit User</h2>

@@ -1,14 +1,54 @@
-<h2>All RESTful Restaurants</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
 
-<% @restaurants.each do |restaurant| %>
-  <ul>
+      <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
+      <%= button_to "LOG OUT", logout_path, :method => :post%>
+      <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
+      </h5>
+    </div>
+    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
+
+
+    </header>
+    <h2>Restaurant Index</h2>
+
+    <strong>Search Bar</strong>
+
+    <%= form_tag restaurants_path, method: 'post' do %>
+      <br>
+      <%= label_tag :'search[term]', "Search Term" %><br>
+      <%= text_field_tag :'search[term]' %><br>
+      <%= label_tag :'search[location]', "Search Location" %><br>
+      <%= text_field_tag :'search[location]' %><br><br>
+
+      <%= submit_tag %>
+    <% end %>
+
     <br>
-  <label><strong>Name: </strong></label><%= link_to restaurant.name, restaurant_path(restaurant) %><br><br>
-  <img src = "<%=restaurant.img_url %>" height = 200 px, length = 200 px><br>
-  <ul>
-  <label><strong>Address: </strong></label><%= restaurant.address %><br>
 
-  <label><strong>Rating: </strong></label><%= restaurant.rating %><br>
-  </ul>
-  </ul>
-<% end %>
+    <% @restaurants.each do |restaurant| %>
+      <ul>
+      <label><strong>Name: </strong></label><br>
+      <%= link_to restaurant.name, restaurant_path(restaurant) %><br><br>
+      <ul>
+
+      <img src = "<%= restaurant.image_url%>" height = 200 px, length = 200 px><br>
+
+      <label><strong>Address: </strong></label><br>
+      <%= restaurant.address %><br><br>
+
+      <label><strong>Rating: </strong></label><br>
+      <%= restaurant.rating %><br><br>
+
+      </ul>
+      </ul>
+    <% end %>
+
+  </body>
+</html>
