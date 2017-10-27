@@ -13,3 +13,94 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+
+  background: url(background.gif) no-repeat center fixed;
+  background-size: cover;
+  background-size: 99%;
+
+}
+
+input::-webkit-input-placeholder {
+    color: #3c3c3c;
+}
+
+h1 {
+  font-family: "Palatino Linotype", "Book Antiqua", Impact, serif;
+  color: black;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 300%;
+}
+
+h2 {
+  color: darkblue;
+  font-family: Impact;
+}
+
+h3 {
+  font-family: "Palatino Linotype", "Book Antiqua", Impact, serif;
+  color: orange;
+  text-decoration: underline;
+ }
+
+ h4 {
+   font-family: Impact;
+   color: blue;
+   text-decoration: underline;
+ }
+
+h5 {
+  font-family: Impact;
+  color: black;
+}
+
+h6 {
+  font-family: Impact;
+  color: orange;
+}
+
+p {
+    font-size: 400%;
+
+    font-family: futura;
+    font-style: italic;
+
+    width:100%;
+
+    text-align: center;
+
+    color:#313131;
+    font-weight: bold;
+    -webkit-animation:colorchange 20s infinite alternate;
+ }
+
+ @-webkit-keyframes colorchange {
+   0% {color: blue;}
+   10% {color: #8e44ad;}
+   20% {color: #1abc9c;}
+   30% {color: #d35400;}
+   40% {color: blue;}
+   50% {color: #34495e;}
+   60% {color: blue;}
+   70% {color: #2980b9;}
+   80% {color: #f1c40f;}
+   90% {color: #2980b9;}
+   100% {color: pink;}
+ }
+
+img {
+   padding:5px;
+   border:5px solid #021a40;
+   background-color:#000;
+}
+
+div.star {
+  height: 150%;
+}
+
+div.comment {
+  background-color: AntiqueWhite;
+  color: black;
+}

@@ -7,17 +7,15 @@
   <body>
     <header>
 
-      <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
-      <%= button_to "LOG OUT", logout_path, :method => :post%>
-      <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
-      </h5>
-    </div>
-    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
-
+      <div class="right-align">
+        <a class="waves-effect waves-light btn"><%= button_to "Search", "/", :method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to @user.name.upcase, user_path(@user),:method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to "LOG OUT", logout_path, :method => :post%></a>
+      </div>
 
     </header>
 
-    <h3>Restaurant Results</h3>
+    <h1>Restaurant Results</h1>
 
     <% @new_array.each do |ele| %>
 

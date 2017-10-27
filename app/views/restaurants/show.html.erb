@@ -6,71 +6,69 @@
   </head>
   <body>
     <header>
-      <div>
-        <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
-        <%= button_to "LOG OUT", logout_path, :method => :post%>
-        <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
-        </h5>
+
+      <div class="right-align">
+        <a class="waves-effect waves-light btn"><%= button_to "Search", "/", :method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to @user.name.upcase, user_path(@user),:method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to "LOG OUT", logout_path, :method => :post%></a>
       </div>
-      <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
 
       <br>
+
+      <div class="right-align">
+        <%= form_for @favorite do |f| %>
+          <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <a class="waves-effect waves-light btn"><%= f.submit "Add Restaurant To Your Favorites"%></a>
+        <% end %>
+      </div>
+
     </header>
-    <h2>Restaurant Show</h2>
 
-    <img src = "<%= @restaurant.image_url %>" height = 200px, length: 200px><br><br>
+    <div align="center">
 
-    <label><strong>Name: </strong></label><br>
-    <%= @restaurant.name %><br><br>
+      <h1><%= @restaurant.name %></h1>
 
-    <label><strong>Address: </strong></label><br>
-    <%= @restaurant.address %><br><br>
+      <img src = "<%= @restaurant.image_url %>" height = 400px, length: 400px><br><br>
 
-    <label><strong>Rating: </strong></label><br>
-    <%= @restaurant.rating %><br><br>
+      <h4>Address: </h4>
+      <h5><%= @restaurant.address %></h5><br>
 
-    <label>Categories: </label><br>
-    <%= @restaurant.categories %><br><br>
+      <h4>Rating: </h4>
+      <div class="star">
+        <% @restaurant.rating.round.times do %>
+          <%= p "★" %>
+        <% end %>
+      </div><br>
 
-    <label>Phone: </label><br>
-    <%= @restaurant.phone %><br><br>
+      <h4>Categories: </h4>
+      <h5><%= @restaurant.categories %></h5><br>
 
-    <label><strong>Comments: </strong></label>
-    <% @restaurant.comments.each do |comment| %>
-    <%= comment.content %><br>
-    <% end %><br><br><br>
+      <h4>Phone: </h4>
+      <h5><%= @restaurant.phone %></h5><br>
 
-    <%= form_for @favorite do |f| %>
+      <div class="comment">
+        <u><strong>Comments:</strong></u>
+        <% @restaurant.comments.each do |comment| %>
+          <li> <strong><%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> says: </strong><%= comment.content %> </li>
+        <% end %><br>
 
-      <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.submit "Add Restaurant To Your Favorites"%>
-    <% end %>
-    <br>
+      </div>
 
-    <center>
+      <br>
+      <div class="comment">
+        <u><strong>New Comment</strong></u>
+        <%= form_for @comment do |f| %>
+          <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+          <strong>Commenting as: <%= @user.name %><br><strong>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+          <%= f.text_area :content %><br>
+          <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit %>
+            <i class="material-icons right">send</i>
+          </button>
+        <% end %>
+      </div>
 
-    <label><strong>Comments: </strong></label>
-    <br>
-
-
-
-    <% @restaurant.comments.each do |comment| %>
-    <li> <%= link_to User.find(comment.user_id).first_name, user_path(comment.user_id)%> said: <%= comment.content %> </li><br>
-    <% end %><br><br>
-
-    </center>
-
-    <h3>New Comment</h3>
-
-    <%= form_for @comment do |f| %>
-      <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
-      Commenting as: <%= @user.name %><br>
-      <%= f.hidden_field :user_id, :value => @user.id %>
-      <%= f.text_area :content %><br>
-
-      <%= f.submit %>
-    <% end %>
-
+    </div>
   </body>
 </html>

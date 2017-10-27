@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :restaurants
+
+  resources :restaurants, except: [:create]
+  post '/restaurants/results', to: "restaurants#create"
   resources :comments
   resources :favorites
   resources :users
@@ -10,5 +12,4 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

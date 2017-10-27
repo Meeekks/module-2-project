@@ -1,7 +1,18 @@
-Hi, <%= @user.name %>!<br><br>
+<div class="right-align">
+  <a class="waves-effect waves-light btn"><%= button_to "Search", "/", :method => :get%></a>
+  <a class="waves-effect waves-light btn"><%= button_to @user.name.upcase, user_path(@user),:method => :get%></a>
+  <a class="waves-effect waves-light btn"><%= button_to "LOG OUT", logout_path, :method => :post%></a>
+</div>
 
-<%= button_to "Search Restaurants", '/restaurants', method: "get" %><br><br>
+<p>Hi, <%= @user.name %>! <br>
+Welcome to RESTful Restaurants!</p>
 
-<%= form_tag '/logout' do %>
-  <%= submit_tag "Logout" %>
+<%= form_tag 'restaurants/results', method: 'post' do %>
+  <br>
+  <%= label_tag :'search[term]', "Search Term" %><br>
+  <%= text_field_tag :'search[term]' %><br>
+  <%= label_tag :'search[location]', "Search Location" %><br>
+  <%= text_field_tag :'search[location]' %><br><br>
+
+  <%= submit_tag %>
 <% end %>

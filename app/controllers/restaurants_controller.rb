@@ -25,12 +25,13 @@ class RestaurantsController < ApplicationController
       hash['categories'] = yelp_result['categories'][0]['title']
       hash['phone'] = yelp_result['display_phone']
 
-      restaurant = Restaurant.create(hash)
+      restaurant = Restaurant.find_or_create_by(hash)
 
       @new_array.push(restaurant)
       end
-      @new_array
 
+    @new_array
+    
     @comment = Comment.new
 
     render :results
@@ -40,25 +41,6 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @comment = Comment.new
     @favorite = Favorite.new
-  end
-
-  def edit
-    @restaurant = Restaurant.find(params[:id])
-  end
-
-  def update
-    @restaurant = Restaurant.find(params[:id])
-    if @restaurant.update(restaurant_params)
-      redirect_to restaurant_path(@restaurant)
-    else
-      render :edit
-    end
-  end
-
-  def destroy
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.destroy
-    redirect_to restaurants_path
   end
 
   private

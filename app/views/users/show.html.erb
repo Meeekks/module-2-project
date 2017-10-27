@@ -6,33 +6,29 @@
   </head>
   <body>
     <header>
-      <label>Logged In As: </label> <%= button_to @user.name.upcase, user_path(@user),:method => :get%>
-      <%= button_to "LOG OUT", logout_path, :method => :post%>
-      <%= button_to "ALL RESTaurants", restaurants_path, :method => :get%>
-      </h5>
-    </div>
-    <img src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd7zU3y8whcTYCmwqFY7a2QZ0EwTT2PwTnVyew0WNVNCf2z_kr" height = 200 px, length = 200 px>
 
+      <div class="right-align">
+        <a class="waves-effect waves-light btn"><%= button_to "Search", "/", :method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to @user.name.upcase, user_path(@user),:method => :get%></a>
+        <a class="waves-effect waves-light btn"><%= button_to "LOG OUT", logout_path, :method => :post%></a>
+      </div>
 
     </header>
-    <h2>User Show</h2>
 
-    <label><strong>Username: </strong></label><%= @user.username %><br><br>
-
-    <label><strong>First Name: </strong></label><%= @user.first_name %><br><br>
-
-    <label><strong>Last Name: </strong></label><%= @user.last_name %><br><br>
-
-    <label><strong>Email: </strong></label><%= @user.email %><br><br>
-
-    <label><strong>Phone Number: </strong></label><%= @user.phone_number %><br><br>
-
-
-    <h3>Here are <%= @user.first_name %>'s favorite restaurants: </h3>
-    <% @user.favorites.each do |fav| %>
-    <br>
-    <%= link_to Restaurant.find(fav.restaurant_id).name, restaurant_path(fav.restaurant_id)%>
-    <%end %>
+      <div class="center">
+        <h1><%= @user.username %></h1>
+        <h5>First Name: <%= @user.first_name %></h5>
+        <h5>Last Name: <%= @user.last_name %></h5>
+        <h5>Email: <%= @user.email %></h5>
+        <h5>Phone Number: <%= @user.phone_number %></h5>
+        <br>
+        <div class="comment">
+          <h4><%= @user.first_name %>'s Favorites: </h4>
+          <% @user.favorites.each do |fav| %>
+            <h5><%= link_to Restaurant.find(fav.restaurant_id).name, restaurant_path(fav.restaurant_id)%></h5>
+          <%end %>
+        </div>
+      </div>
 
   </body>
 </html>
