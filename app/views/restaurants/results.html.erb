@@ -15,34 +15,28 @@
 
     </header>
 
-    <h1>Restaurant Results</h1>
+      <div align="center">
+        <h1>Results</h1><br>
 
-    <% @new_array.each do |ele| %>
+      <% @new_array.each do |restaurant| %>
+        <h2><%= link_to restaurant.name, restaurant_path(restaurant.id) %></h2>
+        <img src = "<%= restaurant.image_url %>" height = 400px, length: 400px><br>
+        <h4>Address: </h4>
+        <h5><%= restaurant.address %></h5><br>
+        <h4>Rating: </h4>
+        <div class="star">
+          <% restaurant.rating.round.times do %>
+            <%= p "★" %>
+          <% end %>
+        </div><br>
+        <h4>Categories: </h4>
+        <h5><%= restaurant.categories %></h5><br>
+        <h4>Phone: </h4>
+        <h5><%= restaurant.phone %></h5><br>
+      <% end %>
 
-      <%= ele['id'] %>
-
-      <label>Name: </label><br>
-      <%= link_to ele['name'], restaurant_path(ele) %><br>
-
-      <label>Address: </label>
-      <%= ele['address'] %><br>
-
-      <label>Rating: </label>
-      <%= ele['rating'] %><br>
-
-      <img src = "<%= ele['image_url']%>" height = 200 px, length = 200 px><br>
-
-      <label>Url: </label>
-      <%= link_to "Website Link", ele['url'] %><br>
-
-      <label>Categories: </label>
-      <%= ele['categories'] %><br>
-
-      <label>Phone: </label>
-      <%= ele['phone'] %><br>
-    <br><br>
-
-    <% end %>
+      <br><br>
+    </div>
 
   </body>
 </html>

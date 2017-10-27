@@ -22,71 +22,48 @@
             </ul>
           </div>
         <% end %>
+        x
 
-      <%= f.label :first_name, "First Name:"%><br>
-      <%= f.text_field :first_name %><br>
+    <div class="center">
 
-      <%= f.label :last_name, "Last Name:" %><br>
-      <%= f.text_field :last_name %><br>
+      <h1>Create User</h1>
 
-      <%= f.label :username, "Username:" %><br>
-      <%= f.text_field :username %><br>
+      <div class="input-field col6">
+        <i class="material-icons prefix">account_circle</i>
+        <%= f.text_field :first_name, style: 'width: 20%;', placeholder: "Enter First Name" %>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">account_circle</i>
+          <%= f.text_field :last_name, style: 'width: 20%;', placeholder: "Enter Last Name" %>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">account_box</i>
+        <%= f.text_field :username, style: 'width: 20%;', placeholder: "Enter Username" %>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">lock_outline</i>
+        <%= f.password_field :password, style: 'width: 20%;', placeholder: "Enter Password"%>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">lock_open</i>
+        <%= f.password_field :confirm_password, style: 'width: 20%;', placeholder: "Confirm Password" %>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">email</i>
+        <%= f.text_field :email, style: 'width: 20%;', placeholder: "Enter Email" %>
+      </div>
+      <div class="input-field col6">
+        <i class="material-icons prefix">local_phone</i>
+        <%= f.text_field :phone_number, style: 'width: 20%;', placeholder: "Enter Phone Number" %><br>
+      </div>
 
-      <%= f.label :password %><br>
-      <%= f.password_field :password%><br>
+      <button class="btn waves-effect waves-light" type="submit" name="action"><%= f.submit %>
+        <i class="material-icons right">send</i>
+      </button>
 
-      <%= f.label :confirm_password %><br>
-      <%= f.password_field :confirm_password %><br>
-
-      <%= f.label :email, "Email:" %><br>
-      <%= f.text_field :email %><br>
-
-      <%= f.label :phone_number, "Phone Number:" %><br>
-      <%= f.text_field :phone_number %><br><br>
-
-      <%= f.submit %>
     <% end %>
+    </div>
+  <br><br>
+
   </body>
 </html>
-
-<div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Enter First Name" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input  id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s12">
-          This is an inline input field:
-          <div class="input-field inline">
-            <input id="email" type="email" class="validate">
-            <label for="email" data-error="wrong" data-success="right">Email</label>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>

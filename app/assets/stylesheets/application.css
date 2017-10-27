@@ -18,7 +18,6 @@ body {
 
   background: url(background.gif) no-repeat center fixed;
   background-size: cover;
-  background-size: 99%;
 
 }
 
@@ -103,4 +102,25 @@ div.star {
 div.comment {
   background-color: AntiqueWhite;
   color: black;
+}
+
+.blur {
+  background: url('background.gif') no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  filter: blur(13px);
+  position: absolute;
+  height: 300px;
+  top: -50px;
+  left: -50px;
+  right: -50px;
+  bottom: -50px;
+}
+
+.widget {
+  border-top: 2px solid rgba(255, 255, 255, .5);
+  border-bottom: 2px solid rgba(255, 255, 255, .5);
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
 }
